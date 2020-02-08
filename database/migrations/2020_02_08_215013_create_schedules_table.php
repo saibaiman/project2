@@ -17,8 +17,8 @@ class CreateSchedulesTable extends Migration
             $table->increments('id');
             $table->string('user_id');
             $table->string('class_id');
-            $table->string('present');
-            $table->string('absent');
+            $table->string('present')->nullable();
+            $table->string('absent')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
