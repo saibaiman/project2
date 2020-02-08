@@ -21,8 +21,8 @@ class CreateClassesTable extends Migration
             $table->string('day_id');
             $table->string('period_id');
             $table->string('name');
-            $table->string('teacher');
-            $table->string('room_number');
+            $table->string('teacher')->nullable();
+            $table->string('room_number')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

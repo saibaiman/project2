@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('user_id');
             $table->string('thread_id');
             $table->string('body');
-            $table->string('image_path');
+            $table->string('image_path')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
