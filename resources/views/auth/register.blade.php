@@ -1,5 +1,8 @@
 @extends('layouts.app')
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/pref.js"></script>
+<script type="text/javascript" src="js/fuculty.js"></script>
+<script type="text/javascript" src="js/class.js"></script>
 @section('content')
 <div class="container">
     <div class="row">
