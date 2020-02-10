@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    {{config('university.hokkaido.hokkaido.10011000.class.0.1')}}
                     You are logged in!
                 </div>
             </div>
