@@ -11,10 +11,14 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('prefectures', 'RegisterSchoolController@selectPref')->name('select.pref');
+Route::get('schools', 'RegisterSchoolController@selectUniversity')->name('select.university');
+Route::get('fuculties', 'RegisterSchoolController@selectFuculty')->name('select.fuculty');
+Route::get('classes', 'RegisterSchoolController@selectClass')->name('select.class');
+Route::get('home', 'HomeController@index')->name('home');
