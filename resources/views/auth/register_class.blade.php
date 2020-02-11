@@ -5,11 +5,24 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">学部選択</div>
+                <div class="panel-heading">学科選択</div>
 
                 <div class="panel-body">
+                    
                     <div class="form-group{{ $errors->has('school') ? ' has-error' : '' }}">
-                        <label for="school" class="col-md-4 control-label">学部を選択してください</label>
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                <p>{{ session('error') }}</p>
+                            </div>
+                        @endif
+
+                        @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                            </div>
+                        @endif 
                         <div class="col-md-6">
                             @if (session('error'))
                             <p class="alert alert-danger">{{ session('error') }}</p>
