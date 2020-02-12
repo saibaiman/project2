@@ -13,7 +13,7 @@
                         <input  type="hidden" name="pref_id" value="{{ $infos['pref_id'] }}">
                         <input  type="hidden" name="university_id" value="{{ $infos['university_id'] }}">
                         <input  type="hidden" name="fuculty_id" value="{{ $infos['fuculty_id'] }}">
-                        <input  type="hidden" name="class_id" value="{{ $infos['class_id'] }}">
+                        <input  type="hidden" name="subject_id" value="{{ $infos['subject_id'] }}">
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">お名前</label>

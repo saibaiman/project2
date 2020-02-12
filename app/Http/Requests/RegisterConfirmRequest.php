@@ -24,15 +24,15 @@ class RegisterConfirmRequest extends FormRequest
     public function rules()
     {
         return [
-            'class_id' => 'numeric|integer'
+            'subject_id' => 'numeric|integer'
         ];
     }
 
     public function messages()
     {
         return [
-            'class_id.numeric' => '正しい:attributeを選択してください。',
-            'class_id.integer' => '正しい:attributeを選択してください。',
+            'subject_id.numeric' => '正しい:attributeを選択してください。',
+            'subject_id.integer' => '正しい:attributeを選択してください。',
         ];
     }
 }
