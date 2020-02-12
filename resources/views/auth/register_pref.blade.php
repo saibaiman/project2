@@ -9,7 +9,6 @@
 
                 <div class="panel-body">
                     <div class="form-group{{ $errors->has('pref') ? ' has-error' : '' }}">
-                        <label for="pref" class="col-md-4 control-label">所属する大学のある県名を選択してください</label>
                         <div class="col-md-6">
                             @if (session('error'))
                                 <p class="alert alert-danger">{{ session('error') }}</p>

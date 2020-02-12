@@ -9,7 +9,6 @@
 
                 <div class="panel-body">
                     <div class="form-group{{ $errors->has('school') ? ' has-error' : '' }}">
-                        <label for="school" class="col-md-4 control-label">大学を選択してください</label>
                         <div class="col-md-6">
                             @if (session('error'))
                             <p class="alert alert-danger">{{ session('error') }}</p>

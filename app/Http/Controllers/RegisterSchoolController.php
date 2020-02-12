@@ -8,7 +8,6 @@ class RegisterSchoolController extends Controller
 {
     public function selectPref(Request $request)
     {
-        $request->session()->flush();
         $prefs = config('prefs');
         return view('auth.register_pref', compact('prefs'));
     }
@@ -16,7 +15,7 @@ class RegisterSchoolController extends Controller
     public function selectUniversity(Request $request)
     {
         $pref_id = $request->pref_id;
-        if (!empty(config($pref_id))) {
+        if (config($pref_id)) {
             $schools = config($pref_id);
             $request->session()->put('pref_id', $pref_id);
         } else {
@@ -27,12 +26,11 @@ class RegisterSchoolController extends Controller
 
     public function selectFuculty(Request $request)
     {
-        $root_by_pref = $request->session()->get('pref_id');
+        $pref_id = $request->session()->get('pref_id');
         $university_id = $request->university_id;
-        $root = $root_by_pref . "." . $university_id;
-        $fuculties = config($root);
-        if (!empty($fuculties)) {
-            $request->session()->put(['university_id' => $university_id, 'root' => $root]);
+        $fuculties = config($pref_id . "." . $university_id);
+        if ($fuculties) {
+            $request->session()->put('university_id', $university_id);
         } else {
             return back()->with('error', '学校が存在しません。');   
         }
@@ -42,13 +40,15 @@ class RegisterSchoolController extends Controller
     public function selectClass(Request $request)
     {
         $fuculty_id = $request->fuculty_id;
-        $root_by_class = $request->session()->get('root');
-        $classes = config($root_by_class . ".class." . $fuculty_id);
+        $pref_id = $request->session()->get('pref_id');
+        $university_id = $request->session()->get('university_id');
+        $classes = config($pref_id . "." . $university_id . ".class." . $fuculty_id);
         if (!empty($classes)) {
             $request->session()->forget('root');
             $request->session()->put('fuculty_id', $fuculty_id);
         } else {
-            return back()->with('error', '不正なエラーがありました。');   
+            return redirect()->route('select.fuculty')
+                ->with('error', '予期せぬエラーが発生しました。もう一度お試しください');   
         }
         return view('auth.register_class', compact('classes'));
     }
