@@ -28,7 +28,7 @@
                             <p class="alert alert-danger">{{ session('error') }}</p>
                             @endif
                             <form action="{{ route('register') }}" method="GET">
-                                <select name="class_id" class="form-control">
+                                <select name="subject_id" class="form-control">
                                     @foreach ($classes as $class => $value)
                                     <option value="{{$class}}">{{$value}}</option>
                                     @endforeach

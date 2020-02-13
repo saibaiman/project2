@@ -19,7 +19,7 @@ class RegisterSchoolController extends Controller
             $schools = config($pref_id);
             $request->session()->put('pref_id', $pref_id);
         } else {
-            return back()->with('error', '不正なエラーがありました。');   
+            return back()->with('error', '存在しない県です。');   
         }
         return view('auth.register_university', compact('schools'));
     }
@@ -32,7 +32,7 @@ class RegisterSchoolController extends Controller
         if ($fuculties) {
             $request->session()->put('university_id', $university_id);
         } else {
-            return back()->with('error', '学校が存在しません。');   
+            return back()->with('error', '大学が存在しません。');   
         }
         return view('auth.register_fuculty', compact('fuculties'));
     }
@@ -47,8 +47,7 @@ class RegisterSchoolController extends Controller
             $request->session()->forget('root');
             $request->session()->put('fuculty_id', $fuculty_id);
         } else {
-            return redirect()->route('select.fuculty')
-                ->with('error', '予期せぬエラーが発生しました。もう一度お試しください');   
+            return back()->with('error', '学部が存在しません。'); 
         }
         return view('auth.register_class', compact('classes'));
     }

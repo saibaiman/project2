@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('pref_id')->nullable();
             $table->string('university_id')->nullable();
             $table->string('fuculty_id')->nullable();
-            $table->string('class_id')->nullable();
+            $table->string('subject_id')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->nullable()->unique();
             $table->string('password')->nullable();

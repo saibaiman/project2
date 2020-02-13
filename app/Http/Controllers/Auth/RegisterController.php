@@ -69,7 +69,7 @@ class RegisterController extends Controller
             'pref_id' => $data['pref_id'],
             'university_id' => $data['university_id'],
             'fuculty_id' => $data['fuculty_id'],
-            'class_id' => $data['class_id']
+            'subject_id' => $data['subject_id']
         ]);
     }
 }
