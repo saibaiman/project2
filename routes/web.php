@@ -17,8 +17,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('prefectures', 'RegisterSchoolController@selectPref')->name('select.pref');
-Route::get('schools', 'RegisterSchoolController@selectUniversity')->name('select.university');
-Route::get('fuculties', 'RegisterSchoolController@selectFuculty')->name('select.fuculty');
-Route::get('classes', 'RegisterSchoolController@selectClass')->name('select.class');
 Route::get('home', 'HomeController@index')->name('home');
+
+//学生新規登録
+Route::group(['namespace' => 'Student',], function() {
+    Route::get('prefectures', 'RegisterSchoolController@selectPref')->name('select.pref');
+    Route::get('schools', 'RegisterSchoolController@selectUniversity')->name('select.university');
+    Route::get('fuculties', 'RegisterSchoolController@selectFuculty')->name('select.fuculty');
+    Route::get('classes', 'RegisterSchoolController@selectClass')->name('select.class');
+});
+
+//学生時間割RESTful
+Route::group(['namespace' => 'Student', 'middleware' => 'auth'], function() {
+    Route::resource('schedules', 'ScheduleController');
+});
