@@ -64,9 +64,7 @@ class ClassController extends Controller
      */
     public function edit($id)
     {
-        //$check_id = 
-        //Lecture::firstOrCreate(['id' => $check_id]);
-        return view('schedule.edit', compact('id'));
+        //
     }
 
     /**

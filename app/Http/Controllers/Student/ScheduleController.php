@@ -19,7 +19,7 @@ class ScheduleController extends Controller
     {
         $user_id = Auth::id();
         $infos = Schedule::firstOrCreate(['user_id' => $user_id]);
-        //配列の番号と時間割の番号を合わせるためはじめにnullを入れておく
+        //配列の番号と時間割の番号を合わせるため、はじめにnullを入れておく
         $lecture_infos[] = null;
         for ($i = 1; $i <= 36; $i++) {
             $class_id = 'class_' . $i;
