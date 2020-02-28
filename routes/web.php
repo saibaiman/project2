@@ -31,3 +31,4 @@ Route::group(['namespace' => 'Student',], function() {
 Route::group(['namespace' => 'Student', 'middleware' => 'auth'], function() {
     Route::resource('schedules', 'ScheduleController');
 });
+Route::resource('class', 'ClassController');
