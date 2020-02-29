@@ -35,7 +35,7 @@
                             @endif
                         @endfor
                     </table>
-</div>
+                    </div>
                 </div>
             </div>
         </div>
