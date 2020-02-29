@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Student;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Lecture;
+use App\Schedule;
 
 class ScheduleController extends Controller
 {
@@ -14,7 +17,19 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        return view('schedule.index');
+        $user_id = Auth::id();
+        $infos = Schedule::firstOrCreate(['user_id' => $user_id]);
+        //配列の番号と時間割の番号を合わせるため、はじめにnullを入れておく
+        $lecture_infos[] = null;
+        for ($i = 1; $i <= 36; $i++) {
+            $class_id = 'class_' . $i;
+            if ($infos->$class_id != null) {
+                $lecture_infos[] = Lecture::where('id', $infos->$class_id)->first();
+            } else {
+                $lecture_infos[] = null;
+            }
+        }
+        return view('schedule.index', compact('lecture_infos'));
     }
 
     /**
@@ -24,7 +39,8 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        //
+        $day_id = $_GET['id'];
+        return view('schedule.add', compact('day_id'));
     }
 
     /**
