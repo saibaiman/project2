@@ -19,6 +19,35 @@
                     <br>
                     <br>
                     ここに掲示板をくっつけるイメージ
+
+                    @if (session('message'))
+                    <div class="alert alert-success">{{session('message')}}</div>
+                    @endif
+
+                    @if (session('error'))
+                    <div class="alert alert-danger">{{session('error')}}</div>
+                    @endif
+
+                    <!--  ここをcssで投稿がなくても掲示板の形を取るようにする -->
+
+                    @if ($posts->isNotEmpty())
+                        <table>
+                        @foreach ($posts as $post)
+                        <tr>
+                            <td>{{$post->body}} 投稿者{{$post->user->name}}</td>
+                        </tr>
+                        @endforeach
+                        </table>   
+                    @else
+
+                    @endif
+
+                    <form method="post" action="{{ route('class.store') }}">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="class_id" value="{{$id}}">
+                        <input type="text" name="body">
+                        <input type="submit" value="投稿する">
+                    </form>
                 </div>
             </div>
         </div>

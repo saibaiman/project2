@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Schedule;
 use App\Lecture;
+use App\Post;
 
 class ClassController extends Controller
 {
@@ -35,9 +36,12 @@ class ClassController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
-        //
+        //投稿内容required validation
+        $result = $post->store($request, Auth::id());
+        return redirect()->back()
+            ->with($result === true ? 'message' : 'error', $result === true ? '投稿しました' : '投稿に失敗しました');
     }
 
     /**
@@ -49,11 +53,13 @@ class ClassController extends Controller
     public function show($id)
     {
         $user_id = Auth::id();
+        $user_name = Auth::user()->name;
         $schedule = Schedule::where('user_id', $user_id)->first();
         $class_id = 'class_' . $id;
         $schedule_id = $schedule->$class_id;
         $lecture = Lecture::where('id', $schedule_id)->first();
-        return view('schedule.detail', compact('id', 'lecture'));
+        $posts = Post::with('user')->where('class_id', $id)->get();
+        return view('schedule.detail', compact('id', 'lecture', 'posts'));
     }
 
     /**

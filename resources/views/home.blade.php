@@ -13,8 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    {{config('university.hokkaido.hokkaido.10011000.class.0.1')}}
                     You are logged in!
+
+                    <a href="{{ route('schedules.index') }}">時間割へ</a>
                 </div>
             </div>
         </div>
