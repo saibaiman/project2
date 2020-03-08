@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Schedule;
 use App\Lecture;
 use App\Post;
+use DB;
+use Image;
 
 class ClassController extends Controller
 {
@@ -39,9 +41,21 @@ class ClassController extends Controller
     public function store(Request $request, Post $post)
     {
         //投稿内容required validation
-        $result = $post->store($request, Auth::id());
+        if ($request->file('image')) {
+            $img = Image::make($request->image);
+            $img_path = 'unipedia_' . uniqid() . '.jpg';
+            $img->resize(300, 300)->save(storage_path() . '/app/public/post_board_img/' .  $img_path);
+            $post->image_path = $img_path;
+            $result = true;
+        } else {
+            $post->body = $request->body;
+            $result = false;
+        }
+        $post->user_id = Auth::id();
+        $post->class_id = $request->class_id;
+        $post->save();
         return redirect()->back()
-            ->with($result === true ? 'message' : 'error', $result === true ? '投稿しました' : '投稿に失敗しました');
+            ->with($result === true ? 'message' : 'error', $result === true ? '画像を投稿しました' : '投稿しました');
     }
 
     /**
@@ -105,7 +119,7 @@ class ClassController extends Controller
         $class_id = 'class_' . $day_id;
         $schedule->$class_id = $lecture_id;
         $schedule->save();
-        
+
         return redirect()->route('schedules.index')->with('status', 'success');
     }
 

@@ -20,7 +20,7 @@
                     @endif
 
                     @if (session('error'))
-                        <div class="alert alert-danger">{{session('error')}}</div>
+                        <div class="alert alert-success">{{session('error')}}</div>
                     @endif
 
                     <!--  ここをcssで投稿がなくても掲示板の形を取るようにする -->
@@ -29,7 +29,11 @@
                         <table>
                             @foreach ($posts as $post)
                                 <tr>
-                                    <td>{{$post->body}} 投稿者{{$post->user->name}}</td>
+                                    @if ($post->image_path)
+                                        <td><img src="{{asset('storage/post_board_img/' . $post->image_path)}}"></td>
+                                    @else 
+                                        <td>{{$post->body}} 投稿者{{$post->user->name}}</td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </table>   
@@ -37,10 +41,11 @@
 
                     @endif
 
-                    <form method="post" action="{{ route('class.store') }}">
+                    <form method="post" action="{{ route('class.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <input type="hidden" name="class_id" value="{{$id}}">
                         <input type="text" name="body" class="form-control">
+                        <input type="file" name="image" class="form-control">
                         <input type="submit" value="投稿する">
                     </form>
                 </div>
