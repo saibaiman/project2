@@ -1,4 +1,20 @@
 @extends('layouts.app')
+<!-- Scripts -->
+<script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.js"></script>
+<script>
+jQuery(function($){
+    $.extend( $.fn.dataTable.defaults, {
+        language: {
+            url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Japanese.json"
+        }
+    });
+    $("#foo-table").DataTable({
+        lengthMenu: [ 20, 40, 60 ],
+        // 件数のデフォルトの値を50にする
+        displayLength: 20,  
+    });
+});
+</script>
 
 @section('content')
 <div class="container">
@@ -12,6 +28,22 @@
                     <p>・</p>
                     <p>・</p>
                     <p>・</p>
+                    <table id="foo-table" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>数字</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for ($i = 1; $i <= 100; $i++)
+                                <tr>
+                                    <td>{{ $i }}</td>   
+                                    <td>{{ $i }} ダミー</td>
+                                </tr>
+                            @endfor 
+                        </tbody>
+                    </table>
                     <details>
                         <summary>
                             授業新規登録はこちら
