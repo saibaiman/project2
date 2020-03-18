@@ -21,13 +21,9 @@ jQuery(function($){
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">{{ config('time.' . $day_id) }} 授業情報</div>
+                <div class="panel-heading">{{ config('time.' . $day_id) }} 授業登録</div>
 
                 <div class="panel-body">
-                    この部分にuniversity_id、曜日、時間で絞り込みした候補を表示
-                    <p>・</p>
-                    <p>・</p>
-                    <p>・</p>
                     <table id="foo-table" class="table table-bordered">
                         <thead>
                             <tr>
@@ -108,4 +104,14 @@ jQuery(function($){
         </div>
     </div>
 </div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <font size="1" color="#7e8183">
+        <ul class="nav nav-pills" style="text-align: center">
+            <li role="presentation" style="width: 24%"><a href="#">マイページ</a></li>
+            <li role="presentation" style="width: 25%" class="active"><a href="{{ route('schedules.index') }}">時間割</a></li>
+            <li role="presentation" style="width: 25%"><a href="#">大学掲示板</a></li>
+            <li role="presentation" style="width: 24%"><a href="#">お知らせ</a></li>
+        </ul>
+    </font>
+</nav>
 @endsection
