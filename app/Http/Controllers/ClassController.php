@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ClassAddRequest;
+use App\Http\Requests\ClassPostRequest;
 use App\Schedule;
 use App\Lecture;
 use App\Post;
@@ -38,7 +40,7 @@ class ClassController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Post $post)
+    public function store(ClassPostRequest $request, Post $post)
     {
         //投稿内容required validation
         if ($request->file('image')) {
@@ -101,7 +103,7 @@ class ClassController extends Controller
      * @return \Illuminate\Http\Response
      */
     //授業登録時に時間割表も更新する
-    public function update(Request $request, $id)
+    public function update(ClassAddRequest $request, $id)
     {
         $user_info = Auth::user();
         //授業情報関係

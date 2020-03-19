@@ -44,7 +44,7 @@
                             <img id="preview" style="width:110px;height:110px;">
                         </div> 
                         <div class="col-sm-10">
-                            <input type="text" name="body" class="form-control" placeholder="ここにテキストを入力" style="height:110px;">
+                            <input type="text" name="body" class="form-control" style="height:110px;" placeholder="{{ $errors->has('body') ? $errors->first('body') : 'ここにテキストを入力' }}">
                         </div>
                     </div>
                     <span class="input-group-btn row">
