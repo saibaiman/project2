@@ -7,7 +7,6 @@
             @if (session('message'))
                 <div class="alert alert-success">{{session('message')}}</div>
             @endif
-
             @if (session('error'))
                 <div class="alert alert-success">{{session('error')}}</div>
             @endif
@@ -39,16 +38,23 @@
             <form method="post" action="{{ route('class.store') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="input-group">
-                    <input type="hidden" name="class_id" value="{{$id}}">
-                    <input type="text" name="body" class="form-control" placeholder="ここにテキストを入力">
-                    <span class="input-group-btn">
-                        <label>
-                            <span class="btn btn-info">
-                                画像を追加
-                                <input type="file" name="image" class="form-control" style="display:none">
-                            </span>
-                        </label>
-                        <input type="submit" class="btn btn-info" value="投稿する">
+                    <input type="hidden" name="class_id" value="{{ $id }}">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <img id="preview" style="width:110px;height:110px;">
+                        </div> 
+                        <div class="col-sm-10">
+                            <input type="text" name="body" class="form-control" placeholder="ここにテキストを入力" style="height:110px;">
+                        </div>
+                    </div>
+                    <span class="input-group-btn row">
+                        <span class="btn btn-info" class="col-sm-12" style="height:55px;padding-top:5px;">
+                            <p style="padding-top:8px">画像を選択する</p>
+                            <input type="file" name="image" class="form-control" style="display:none" id="putImage">
+                        </span>
+                        <span>    
+                            <input type="submit" class="btn btn-info col-sm-12" value="投稿する" style="height:55px;">
+                        </span>
                     </span>
                 </div>
             </form>
@@ -62,13 +68,13 @@
                             <br>
                             @if ($post->image_path)
                                 <img src="{{asset('storage/post_board_img/' . $post->image_path)}}">
-                            @else 
-                                <p style="overflow-wrap: break-word">
-                                    {{ $post->body }}
-                                </p>
                             @endif
+                            <p style="overflow-wrap: break-word">
+                            {{ $post->body }}
+                            </p>
                         </li>
                     @endforeach
+                    {{ $posts->links() }}
                 @else
                     <li class="list-group-item">この授業についての投稿はまだありません。</li>
                 @endif
@@ -86,4 +92,21 @@
         </ul>
     </font>
 </nav>
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+$(function () {
+    $('#putImage').on('change', function (e) {
+        var file = e.target.files[0];
+        var reader = new FileReader();
+        if(file.type.indexOf("image") < 0){
+            alert("画像ファイルを指定してください。");
+            return false;
+        }
+        reader.onload = function (e) {
+            $("#preview").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(file);
+    })
+})
+</script>
 @endsection
