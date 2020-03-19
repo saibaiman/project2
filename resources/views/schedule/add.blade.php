@@ -62,15 +62,15 @@ jQuery(function($){
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('room') ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('room_number') ? ' has-error' : '' }}">
                                 <label for="email" class="col-md-4 control-label">教室</label>
 
                                 <div class="col-md-6">
                                     <input id="room" type="text" class="form-control" name="room" required>
 
-                                    @if ($errors->has('room'))
+                                    @if ($errors->has('room_number'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('room') }}</strong>
+                                        <strong>{{ $errors->first('room_number') }}</strong>
                                     </span>
                                     @endif
                                 </div>
