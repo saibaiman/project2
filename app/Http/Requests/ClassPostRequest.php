@@ -24,7 +24,7 @@ class ClassPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'body' => 'nullable|max:10|required'
+            'body' => 'nullable|max:80'
         ];
     }
 }

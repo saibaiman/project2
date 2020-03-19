@@ -42,8 +42,13 @@ class ClassController extends Controller
      */
     public function store(ClassPostRequest $request, Post $post)
     {
+        if (!$request->body && !$request->image) {
+            return redirect()->back()
+                ->with('error', '投稿に失敗しました');
+        }
+
         //投稿内容required validation
-        if ($request->file('image')) {
+        if ($request->image) {
             $img = Image::make($request->image);
             $img_path = 'unipedia_' . uniqid() . '.jpg';
             $img->resize(300, 300)->save(storage_path() . '/app/public/post_board_img/' .  $img_path);
@@ -60,7 +65,7 @@ class ClassController extends Controller
         $post->class_id = $request->class_id;
         $post->save();
         return redirect()->back()
-            ->with($result === true ? 'message' : 'error', $result === true ? '画像を投稿しました' : '投稿しました');
+            ->with('message', '投稿しました');
     }
 
     /**
