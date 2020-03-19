@@ -47,10 +47,13 @@ class ClassController extends Controller
             $img->resize(300, 300)->save(storage_path() . '/app/public/post_board_img/' .  $img_path);
             $post->image_path = $img_path;
             $result = true;
-        } else {
-            $post->body = $request->body;
-            $result = false;
         }
+
+        if ($request->body) {
+            $post->body = $request->body;
+            $result = true;
+        }
+
         $post->user_id = Auth::id();
         $post->class_id = $request->class_id;
         $post->save();
@@ -72,7 +75,10 @@ class ClassController extends Controller
         $class_id = 'class_' . $id;
         $schedule_id = $schedule->$class_id;
         $lecture = Lecture::where('id', $schedule_id)->first();
-        $posts = Post::with('user')->where('class_id', $id)->get();
+        $posts = Post::with('user')
+            ->where('class_id', $id)
+            ->orderBy('created_at', 'dsc')
+            ->paginate(10);
         return view('schedule.detail', compact('id', 'lecture', 'posts'));
     }
 
