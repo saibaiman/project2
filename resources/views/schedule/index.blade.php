@@ -49,7 +49,7 @@
         <ul class="nav nav-pills" style="text-align: center">
             <li role="presentation" style="width: 24%"><a href="#">マイページ</a></li>
             <li role="presentation" style="width: 25%" class="active"><a href="{{ route('schedules.index') }}">時間割</a></li>
-            <li role="presentation" style="width: 25%"><a href="#">大学掲示板</a></li>
+            <li role="presentation" style="width: 25%"><a href="{{ route('threads.index') }}">大学掲示板</a></li>
             <li role="presentation" style="width: 24%"><a href="#">お知らせ</a></li>
         </ul>
     </font>
