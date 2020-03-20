@@ -8,7 +8,7 @@
                 <div class="alert alert-success">{{session('message')}}</div>
             @endif
             @if (session('error'))
-                <div class="alert alert-success">{{session('error')}}</div>
+                <div class="alert alert-danger">{{session('error')}}</div>
             @endif
             <input id="lefile" type="file" style="display:none">
             <!--  ここをcssで投稿がなくても掲示板の形を取るようにする -->
@@ -47,15 +47,17 @@
                             <input type="text" name="body" class="form-control" style="height:110px;" placeholder="{{ $errors->has('body') ? $errors->first('body') : 'ここにテキストを入力' }}">
                         </div>
                     </div>
-                    <span class="input-group-btn row">
+                    <div class="input-group-btn row">
                         <span class="btn btn-info" class="col-sm-12" style="height:55px;padding-top:5px;">
-                            <p style="padding-top:8px">画像を選択する</p>
-                            <input type="file" name="image" class="form-control" style="display:none" id="putImage">
+                            <label>
+                                <p style="padding-top:8px">画像を選択する</p>
+                                <input type="file" name="image" class="form-control" style="display:none" id="putImage">
+                            </label>
                         </span>
                         <span>    
                             <input type="submit" class="btn btn-info col-sm-12" value="投稿する" style="height:55px;">
                         </span>
-                    </span>
+                    </div>
                 </div>
             </form>
             <ul class="list-group">
