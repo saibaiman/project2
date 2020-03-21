@@ -40,7 +40,8 @@ class ScheduleController extends Controller
     public function create()
     {
         $day_id = $_GET['id'];
-        return view('schedule.add', compact('day_id'));
+        $classes = Lecture::where('day_id', $day_id)->paginate(10);
+        return view('schedule.add', compact('day_id', 'classes'));
     }
 
     /**
@@ -51,7 +52,12 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $class = Lecture::find($request->id);
+        $schedule = Schedule::where('user_id', Auth::id())->first();
+        $class_id = 'class_' . $class->day_id;
+        $schedule->$class_id = $class->id;
+        $schedule->save();
+        return redirect()->route('schedules.index')->with('status', '授業を登録しました');   
     }
 
     /**
