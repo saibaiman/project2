@@ -34,3 +34,4 @@ Route::group(['namespace' => 'Student', 'middleware' => 'auth'], function() {
 Route::resource('threads', 'ThreadController');
 Route::resource('universityposts', 'UniversityPostController');
 Route::resource('class', 'ClassController', ['only' => ['show', 'update', 'store']]);
+Route::resource('questions', 'QuestionController', ['only' => ['index']]);
