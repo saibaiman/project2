@@ -111,7 +111,7 @@ class ClassController extends Controller
     public function update(ClassAddRequest $request, $id)
     {
         $user_info = Auth::user();
-        //授業情報関係
+        //授業情報関係 //classesテーブル
         $lecture = Lecture::updateOrCreate([
             'university_id' => $user_info->university_id,
             'fuculty_id' => $user_info->fuculty_id,
@@ -123,7 +123,7 @@ class ClassController extends Controller
             'period_id' => $id
         ], [
             'teacher' => $request->teacher,
-            'room_number' => $request->room
+            'room_number' => $request->room_number
         ]);
         $lecture_id = $lecture->id;
         $day_id = $lecture->day_id;
@@ -133,7 +133,7 @@ class ClassController extends Controller
         $schedule->$class_id = $lecture_id;
         $schedule->save();
 
-        return redirect()->route('schedules.index')->with('status', 'success');
+        return redirect()->route('schedules.index')->with('status', '授業を登録しました');
     }
 
     /**
