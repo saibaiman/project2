@@ -14,7 +14,10 @@
                         </div>
                     @endif
                     You are logged in!
-
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                        {{ csrf_field() }}
+                        <input type="submit" value="logout">
+                    </form>
                     <a href="{{ route('schedules.index') }}">時間割へ</a>
                 </div>
             </div>

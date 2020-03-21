@@ -53,6 +53,8 @@ class ScheduleController extends Controller
     public function store(Request $request)
     {
         $class = Lecture::find($request->id);
+        ++$class->count;
+        $class->save();
         $schedule = Schedule::where('user_id', Auth::id())->first();
         $class_id = 'class_' . $class->day_id;
         $schedule->$class_id = $class->id;
