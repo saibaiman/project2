@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ClassAddRequest;
+use App\Http\Requests\ClassPostRequest;
 use App\Schedule;
 use App\Lecture;
 use App\Post;
@@ -38,24 +40,32 @@ class ClassController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Post $post)
+    public function store(ClassPostRequest $request, Post $post)
     {
+        if (!$request->body && !$request->image) {
+            return redirect()->back()
+                ->with('error', '投稿に失敗しました');
+        }
+
         //投稿内容required validation
-        if ($request->file('image')) {
+        if ($request->image) {
             $img = Image::make($request->image);
             $img_path = 'unipedia_' . uniqid() . '.jpg';
             $img->resize(300, 300)->save(storage_path() . '/app/public/post_board_img/' .  $img_path);
             $post->image_path = $img_path;
             $result = true;
-        } else {
-            $post->body = $request->body;
-            $result = false;
         }
+
+        if ($request->body) {
+            $post->body = $request->body;
+            $result = true;
+        }
+
         $post->user_id = Auth::id();
         $post->class_id = $request->class_id;
         $post->save();
         return redirect()->back()
-            ->with($result === true ? 'message' : 'error', $result === true ? '画像を投稿しました' : '投稿しました');
+            ->with('message', '投稿しました');
     }
 
     /**
@@ -72,7 +82,10 @@ class ClassController extends Controller
         $class_id = 'class_' . $id;
         $schedule_id = $schedule->$class_id;
         $lecture = Lecture::where('id', $schedule_id)->first();
-        $posts = Post::with('user')->where('class_id', $id)->get();
+        $posts = Post::with('user')
+            ->where('class_id', $id)
+            ->orderBy('created_at', 'dsc')
+            ->paginate(10);
         return view('schedule.detail', compact('id', 'lecture', 'posts'));
     }
 
@@ -95,10 +108,10 @@ class ClassController extends Controller
      * @return \Illuminate\Http\Response
      */
     //授業登録時に時間割表も更新する
-    public function update(Request $request, $id)
+    public function update(ClassAddRequest $request, $id)
     {
         $user_info = Auth::user();
-        //授業情報関係
+        //授業情報関係 //classesテーブル
         $lecture = Lecture::updateOrCreate([
             'university_id' => $user_info->university_id,
             'fuculty_id' => $user_info->fuculty_id,
@@ -110,7 +123,7 @@ class ClassController extends Controller
             'period_id' => $id
         ], [
             'teacher' => $request->teacher,
-            'room_number' => $request->room
+            'room_number' => $request->room_number
         ]);
         $lecture_id = $lecture->id;
         $day_id = $lecture->day_id;
@@ -120,7 +133,7 @@ class ClassController extends Controller
         $schedule->$class_id = $lecture_id;
         $schedule->save();
 
-        return redirect()->route('schedules.index')->with('status', 'success');
+        return redirect()->route('schedules.index')->with('status', '授業を登録しました');
     }
 
     /**
