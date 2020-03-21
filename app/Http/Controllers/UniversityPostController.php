@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Thread;
-use App\Universitypost;
+use App\UniversityPost;
 use Image;
 
-class UniversitypostController extends Controller
+class UniversityPostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -39,21 +39,21 @@ class UniversitypostController extends Controller
     //ここで新規投稿
     public function store(Request $request)
     {
-        $universitypost = new Universitypost;
+        $university_post = new UniversityPost;
         //投稿内容required validation
         if ($request->file('image')) {
             $img = Image::make($request->image);
             $img_path = 'unipedia_' . uniqid() . '.jpg';
             $img->resize(300, 300)->save(storage_path() . '/app/public/post_board_img/' .  $img_path);
-            $universitypost->image_path = $img_path;
+            $university_post->image_path = $img_path;
             $result = true;
         } else {
-            $universitypost->body = $request->body;
+            $university_post->body = $request->body;
             $result = false;
         }
-        $universitypost->user_id = Auth::id();
-        $universitypost->thread_id = $request->thread_id;
-        $universitypost->save();
+        $university_post->user_id = Auth::id();
+        $university_post->thread_id = $request->thread_id;
+        $university_post->save();
         return redirect()->back()
             ->with($result === true ? 'message' : 'error', $result === true ? '画像を投稿しました' : '投稿しました');
     }
@@ -68,7 +68,7 @@ class UniversitypostController extends Controller
     public function show($id)
     {
         $thread = Thread::find($id);
-        $posts = Universitypost::where('thread_id', $id)->get();
+        $posts = UniversityPost::where('thread_id', $id)->get();
         return view('university_post.post_index', compact('thread', 'posts'));
     }
 

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Universitypost extends Model
+class UniversityPost extends Model
 {
     protected $table = 'university_posts';
 

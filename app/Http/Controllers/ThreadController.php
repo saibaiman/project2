@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Thread;
-use App\Universitypost;
+use App\UniversityPost;
 
 class ThreadController extends Controller
 {
@@ -53,7 +53,7 @@ class ThreadController extends Controller
             'count' => 1,
             'title' => $request->title,
         ]);
-        $posts = Universitypost::create([
+        $posts = UniversityPost::create([
             'user_id' => $user->id,
             'thread_id' => $thread->id,
             'body' => 'スレッドが作成されました。',

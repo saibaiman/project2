@@ -32,5 +32,5 @@ Route::group(['namespace' => 'Student', 'middleware' => 'auth'], function() {
     Route::resource('schedules', 'ScheduleController');
 });
 Route::resource('threads', 'ThreadController');
-Route::resource('universityposts', 'UniversitypostController');
+Route::resource('universityposts', 'UniversityPostController');
 Route::resource('class', 'ClassController', ['only' => ['show', 'update', 'store']]);
