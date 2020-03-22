@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Student;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use App\Thread;
 use App\UniversityPost;
 
@@ -47,18 +48,20 @@ class ThreadController extends Controller
         $user = Auth::user();
         $pref_id = $user->pref_id;
         $university_id = $user->university_id;
-        $thread = Thread::create([
-            'university_id' => $university_id,
-            'type_id' => $request->type_id,
-            'user_id' => $user->id,
-            'count' => 1,
-            'title' => $request->title,
-        ]);
-        $posts = UniversityPost::create([
-            'user_id' => $user->id,
-            'thread_id' => $thread->id,
-            'body' => 'スレッドが作成されました。',
-        ]);
+        DB::transaction(function () use ($user, $university_id, $request) {
+            $thread = Thread::create([
+                'university_id' => $university_id,
+                'type_id' => $request->type_id,
+                'user_id' => $user->id,
+                'count' => 1,
+                'title' => $request->title,
+            ]);
+            $posts = UniversityPost::create([
+                'user_id' => $user->id,
+                'thread_id' => $thread->id,
+                'body' => 'スレッドが作成されました。',
+            ]);
+        });
         return view('university_post.thread_menu', compact('pref_id', 'university_id'));
     }
 
