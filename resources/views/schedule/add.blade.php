@@ -8,13 +8,16 @@
 
                 <div class="panel-body">
                     <div class="already_classes">
-                        @foreach ($classes as $class)
-                            <form class="form-horizontal" method="POST" action="{{ route('schedules.store') }}">
-                                {{ csrf_field() }}
-                                <input type="hidden" value="{{ $class->id }}" name="id">
-                                <input type="submit" style="appearance: none;border:none;" value="{{ $class->name }}">
-                            </form>
-                        @endforeach
+                        @if ($classes->isNotEmpty())
+                            @foreach ($classes as $class)
+                                <form class="form-horizontal" method="POST" action="{{ route('schedules.store') }}">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" value="{{ $class->id }}" name="id">
+                                    <input type="submit" style="appearance: none;border:none;" value="{{ $class->name }}">
+                                </form>
+                            @endforeach
+                            {{ $classes->appends(['id' => $day_id])->links() }}
+                        @endif
                     </div>
                     <details>
                         <summary>
