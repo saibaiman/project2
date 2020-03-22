@@ -72,14 +72,4 @@
         </div>
     </div>
 </div>
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <font size="1" color="#7e8183">
-        <ul class="nav nav-pills" style="text-align: center">
-            <li role="presentation" style="width: 24%"><a href="#">マイページ</a></li>
-            <li role="presentation" style="width: 25%"><a href="{{ route('schedules.index') }}">時間割</a></li>
-            <li role="presentation" style="width: 25%"><a href="#">大学掲示板</a></li>
-            <li role="presentation" style="width: 24%" class="active"><a href="{{ route('questions.index') }}">お問い合わせ</a></li>
-        </ul>
-    </font>
-</nav>
 @endsection
