@@ -1,9 +1,11 @@
 @extends('layouts.app')
 <link href="css/style.css" rel="stylesheet" type="text/css">
 @section('content')
-<div class="container">
+<div class="container" style="margin-top: 10px;">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="text-align: center">プロフィール編集</div>
             @if (session('status'))
                 <div class="alert alert-success">
                     {{ session('status') }}
@@ -22,7 +24,7 @@
                 </ul>
             @endif
 
-            <form action="{{route('profile.store')}}" method="post">
+            <form action="{{route('profile.store')}}" method="post" class="text-center">
                 {{ csrf_field() }}
                 <p>氏名</p>
                 <input type="text" name="name" value="{{ $user->name }}">
@@ -34,8 +36,9 @@
                 <input type="password" name="newpass_confirmation">
                 <p>現在のパスワード</p>
                 <input type="password" name="oldpass">
-                <input type="submit" class="btn btn-primary" value="送信">
+                <p><input type="submit" class="btn btn-primary" value="送信" style="margin-top: 10px"></p>
             </form>
+            </div>
         </div>
     </div>
 </div>

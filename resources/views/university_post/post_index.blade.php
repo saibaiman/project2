@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" style="margin-top: 10px;">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             @if (session('message'))
@@ -27,7 +27,7 @@
                     <span class="input-group-btn">
                         <label>
                             <span class="btn btn-info">
-                                画像を追加
+                                画像を選択する
                                 <input type="file" name="image" class="form-control" style="display:none">
                             </span>
                         </label>
