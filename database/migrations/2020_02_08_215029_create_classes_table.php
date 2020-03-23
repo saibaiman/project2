@@ -19,7 +19,7 @@ class CreateClassesTable extends Migration
             $table->string('fuculty_id');
             $table->string('subject_id');
             $table->string('day_id');
-            $table->string('period_id');
+            $table->integer('count')->default(1);
             $table->string('name');
             $table->string('teacher')->nullable();
             $table->string('room_number')->nullable();

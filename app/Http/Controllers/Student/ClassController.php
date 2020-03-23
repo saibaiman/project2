@@ -120,8 +120,6 @@ class ClassController extends Controller
             'name' => $request->name,
             //$idは何曜何限かの情報
             'day_id' => $id,
-            //ここはperiod_idがいらないから後で削除、あとカラム名も決めなおさないとめっちゃわかりにくい
-            'period_id' => $id
         ], [
             'teacher' => $request->teacher,
             'room_number' => $request->room_number
