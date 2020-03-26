@@ -62,7 +62,7 @@ class ThreadController extends Controller
                 'body' => 'スレッドが作成されました。',
             ]);
         });
-        return view('university_post.thread_menu', compact('pref_id', 'university_id'));
+        return back();
     }
 
     /**
