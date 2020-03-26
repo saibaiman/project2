@@ -69,7 +69,9 @@ class UniversityPostController extends Controller
     public function show($id)
     {
         $thread = Thread::find($id);
-        $posts = UniversityPost::where('thread_id', $id)->get();
+        $posts = UniversityPost::where('thread_id', $id)
+            ->orderBy('created_at', 'dsc')
+            ->get();
         return view('university_post.post_index', compact('thread', 'posts'));
     }
 
