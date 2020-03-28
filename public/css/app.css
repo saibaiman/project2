@@ -30,6 +30,9 @@ section,
 summary {
   display: block;
 }
+.summaryText::-webkit-details-marker {
+  display: none;
+}
 audio,
 canvas,
 progress,
