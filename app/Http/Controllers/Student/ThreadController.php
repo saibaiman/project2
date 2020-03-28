@@ -62,7 +62,7 @@ class ThreadController extends Controller
                 'body' => 'スレッドが作成されました。',
             ]);
         });
-        return view('university_post.thread_menu', compact('pref_id', 'university_id'));
+        return back();
     }
 
     /**
@@ -76,7 +76,9 @@ class ThreadController extends Controller
     {
         $user = Auth::user();
         $university_id = $user->university_id;
-        $threads = Thread::where([['university_id', $university_id], ['type_id', $id]])->get();
+        $threads = Thread::where([['university_id', $university_id], ['type_id', $id]])
+            ->orderBy('created_at', 'dsc')
+            ->get();
         return view('university_post.thread_index', compact('university_id', 'id', 'threads'));
     }
 
