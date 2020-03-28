@@ -29,23 +29,21 @@
                     </span>
                 </div>
             </form>
-            <ul class="list-group">
-                @if ($threads->isNotEmpty())
-                    @foreach ($threads as $thread)
-                        <li class="list-group-item">
-                            <a class="list-group-item" href="{{ route('universityposts.show', ['id' => $thread->id]) }}" style="overflow-wrap: break-word">
-                                <font size="2" color="#7e8183">
-                                    {{ $thread->created_at }}にオープン
-                                    閲覧数{{ $thread->count }}回
-                                </font>
-                                <p>{{ $thread->title }}</p>
-                            </a>
-                        </li>
-                    @endforeach
-                @else
-                    <li class="list-group-item">スレッドはまだありません。</li>
-                @endif
-            </ul>
+            @if ($threads->isNotEmpty())
+                @foreach ($threads as $thread)
+                    <div class="list-group">
+                        <a class="list-group-item" href="{{ route('universityposts.show', ['id' => $thread->id]) }}" style="overflow-wrap: break-word">
+                            <font size="2" color="#7e8183">
+                                {{ $thread->created_at }}にオープン
+                                閲覧数{{ $thread->count }}回
+                            </font>
+                            <p>{{ $thread->title }}</p>
+                        </a>
+                    </div>
+                @endforeach
+            @else
+                <li class="list-group-item">スレッドはまだありません。</li>
+            @endif
         </div>
     </div>
 </div>

@@ -23,19 +23,41 @@
                     @endforeach
                 </ul>
             @endif
-
-            <form action="{{route('profile.store')}}" method="post" class="text-center">
+            <form action="{{route('profile.store')}}" method="post">
                 {{ csrf_field() }}
-                <p>氏名</p>
-                <input type="text" name="name" value="{{ $user->name }}">
-                <p>メールアドレス</p>
-                <input type="text" name="email" value="{{ $user->email }}">
-                <p>新しいパスワード</p>
-                <input type="password" name="newpass">
-                <p>新しいパスワード（確認用）</p>
-                <input type="password" name="newpass_confirmation">
-                <p>現在のパスワード</p>
-                <input type="password" name="oldpass">
+                <div class="form-group">
+                    <details>
+                        <summary class="summaryText">
+                            <span class="glyphicon glyphicon-plus" style="font-size: 25px" aria-hidden="true"></span> 
+                            氏名
+                        </summary>
+                        <input class="form-control" type="text" name="name" value="{{ $user->name }}">
+                    </details>
+                </div>
+                <div class="form-group">
+                    <details>
+                        <summary class="summaryText">
+                            <span class="glyphicon glyphicon-plus" style="font-size: 25px" aria-hidden="true"></span> 
+                            メールアドレス
+                        </summary>
+                        <input class="form-control" type="text" name="email" value="{{ $user->email }}">
+                    </details>
+                </div>
+                <div class="form-group">
+                    <details>
+                        <summary class="summarytext">
+                            <span class="glyphicon glyphicon-plus" style="font-size: 25px" aria-hidden="true"></span> 
+                            新しいパスワード
+                        </summary>
+                        <input class="form-control" type="password" name="newpass">
+                        <p>新しいパスワード（確認用）</p>
+                        <input class="form-control" type="password" name="newpass_confirmation">
+                    </details>
+                </div>
+                <div class="form-group">
+                    <p>現在のパスワード</p>
+                    <input class="form-control" type="password" name="oldpass">
+                </div>
                 <p><input type="submit" class="btn btn-primary" value="送信" style="margin-top: 10px"></p>
             </form>
             </div>
