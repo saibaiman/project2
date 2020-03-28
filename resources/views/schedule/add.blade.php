@@ -73,7 +73,7 @@
                             </details>
                             <div class="panel panel-default">
                                 <div class="panel-heading" style="text-align: center">
-                                    他のユーザーに登録されている授業一覧
+                                    他の学生が登録済みの授業一覧
                                 </div>
                                 <div class="panel-body" style="text-align: center">
                                     @if ($classes->isNotEmpty())
