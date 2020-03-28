@@ -13,7 +13,7 @@
                         <div class="list-group">
                             <p>自分の授業がない場合は新しく登録しましょう！</p>
                             <details>
-                                <summary>
+                                <summary class="summaryText">
                                     授業新規登録はこちら
                                 </summary>
                                 <form class="form-horizontal" method="POST" action="{{ route('class.update', ['id' => $day_id]) }}">
@@ -73,16 +73,42 @@
                             </details>
                             <div class="panel panel-default">
                                 <div class="panel-heading" style="text-align: center">
-                                    {{ config('time.' . $day_id) }}の授業一覧
+                                    他の学生が登録済みの授業一覧
+                                </div>
+                                <div class="panel-body" style="text-align: center">
                                     @if ($classes->isNotEmpty())
-                                        @foreach ($classes as $class)
-                                            <form class="form-horizontal" method="POST" action="{{ route('schedules.store') }}">
-                                                {{ csrf_field() }}
-                                                <input type="hidden" value="{{ $class->id }}" name="id">
-                                                <input type="submit" style="appearance: none;border:none;" value="{{ $class->name }}">
-                                                この授業の登録者 {{ $class->count }}人
-                                            </form>
-                                        @endforeach
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center" style="width: 50%">授業名</th>
+                                                    <th class="text-center" style="width: 30%">登録者</th>
+                                                    <th style="width: auto"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($classes as $class)
+                                                    <tr>
+                                                        <th>
+                                                            <p class="list-group-item-heading">{{ $class->name }}</p>
+                                                            {{ $class->teacher }}・{{ $class->room_number }}
+                                                        </th>
+                                                        <td>
+                                                            {{ $class->count }}人
+                                                        </td>
+                                                        <td class="text-right">
+                                                            <form class="form-horizontal" method="POST" action="{{ route('schedules.store') }}">
+                                                                {{ csrf_field() }}
+                                                                <input type="hidden" value="{{ $class->id }}" name="id">
+                                                                <button class="btn btn-primary" type='submit' style="appearance: none;border:none;">
+                                                                    <span class="glyphicon glyphicon-plus" style="font-size: 25px" aria-hidden="true"></span>
+                                                                    選択
+                                                                </button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                         {{ $classes->appends(['id' => $day_id])->links() }}
                                     @else
                                         <p>現在登録されている授業はありません。</p>
