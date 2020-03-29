@@ -11,13 +11,13 @@
             @endif
             <table border=1>
                 <tr>
-                    <th bgcolor="#dce6f5" width="10%"></th>
-                    <th bgcolor="#dce6f5" width="15%">月</th>
-                    <th bgcolor="#dce6f5" width="15%">火</th>
-                    <th bgcolor="#dce6f5" width="15%">水</th>
-                    <th bgcolor="#dce6f5" width="15%">木</th>
-                    <th bgcolor="#dce6f5" width="15%">金</th>
-                    <th bgcolor="#dce6f5" width="15%">土</th>
+                    <th bgcolor="#E4E5E9" width="10%"></th>
+                    <th bgcolor="#E4E5E9" width="15%">月</th>
+                    <th bgcolor="#E4E5E9" width="15%">火</th>
+                    <th bgcolor="#E4E5E9" width="15%">水</th>
+                    <th bgcolor="#E4E5E9" width="15%">木</th>
+                    <th bgcolor="#E4E5E9" width="15%">金</th>
+                    <th bgcolor="#E4E5E9" width="15%">土</th>
                 </tr>
                 @php
                     $j = 1;
@@ -25,7 +25,7 @@
                 <!-- 以下の部分は改善の余地あり -->
                 @for ($i = 1; $i <= 36; $i++)
                     @if ($i % 6 == 1)
-                        <tr><td bgcolor="#dce6f5" width="4%">{{ $j++ }}</td>
+                        <tr><td bgcolor="#E4E5E9" width="4%">{{ $j++ }}</td>
                     @endif
                     <td width="16%">
                         @if ($lecture_infos[$i] == null)
