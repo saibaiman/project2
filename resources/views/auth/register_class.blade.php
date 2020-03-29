@@ -33,13 +33,17 @@
                                     <option value="{{$class}}">{{$value}}</option>
                                     @endforeach
                                 </select>
-                                <input type="submit" value="確認へ">
+                                <button class="btn btn-primary btn-block" type="submit">
+                                    次へ
+                                </button>
                             </form>
                         </div>
                     </div>
                 </div>
-
             </div>
+            <a class="btn btn-info btn-block" href="{{ route('login') }}">
+                ログインはこちら
+            </a>
         </div>
     </div>
 </div>

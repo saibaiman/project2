@@ -19,13 +19,17 @@
                                     <option value="{{$fuculty}}">{{$value}}</option>
                                     @endforeach
                                 </select>
-                                <input type="submit" value="学科選択へ">
+                                <button class="btn btn-primary btn-block" type="submit">
+                                    学科選択に進む
+                                </button>
                             </form>
                         </div>
                     </div>
                 </div>
-
             </div>
+            <a class="btn btn-info btn-block" href="{{ route('login') }}">
+                ログインはこちら
+            </a>
         </div>
     </div>
 </div>

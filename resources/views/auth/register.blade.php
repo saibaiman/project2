@@ -67,8 +67,8 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
+                                <button class="btn btn-primary btn-block" type="submit">
+                                    登録
                                 </button>
                             </div>
                         </div>
