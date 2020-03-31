@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="panel panel-default" style="margin-bottom:10px">
                 <div class="panel-heading">学部選択</div>
 
                 <div class="panel-body">
@@ -19,12 +19,18 @@
                                     <option value="{{$fuculty}}">{{$value}}</option>
                                     @endforeach
                                 </select>
-                                <input type="submit" value="学科選択へ">
+                                <button class="btn btn-primary btn-block" type="submit">
+                                    学科選択に進む
+                                </button>
                             </form>
                         </div>
                     </div>
                 </div>
-
+            </div>
+            <div class="text-center">
+                <a href="{{ route('login') }}">
+                    ログインはこちら
+                </a>
             </div>
         </div>
     </div>

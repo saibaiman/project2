@@ -32,15 +32,6 @@
                     <ul class="nav navbar-nav">
                         &nbsp;
                     </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                        <li><a href="{{ route('select.pref') }}">Register</a></li>
-                        @endguest
-                    </ul>
                 </div>
             </div>
         </nav>
