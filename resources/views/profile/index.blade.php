@@ -68,7 +68,7 @@
                                     <input class="form-control" type="password" name="oldpass">
                                 </div>
                             </span>
-                            <input type="submit" class="btn btn-info btn-block" value="送信" style="margin-top: 10px">
+                            <input type="submit" value="プロフィールを変更する" class="btn btn-info btn-block" style="margin: 5% 20%">
                         </div>
                     </form>
                 </div>

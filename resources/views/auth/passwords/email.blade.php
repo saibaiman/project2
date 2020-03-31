@@ -33,8 +33,8 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Send Password Reset Link
+                                <button type="submit" class="btn btn-primary btn-block" style="width: 70%; margin: 0% 15%">
+                                    パスワード変更用メールを送信
                                 </button>
                             </div>
                         </div>

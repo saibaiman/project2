@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="panel panel-default" style="margin-bottom:10px">
                 <div class="panel-heading">大学所在地</div>
 
                 <div class="panel-body">
@@ -27,9 +27,11 @@
                     </div>
                 </div>
             </div>
-            <a class="btn btn-info btn-block" href="{{ route('login') }}">
-                ログインはこちら
-            </a>
+            <div class="text-center">
+                <a href="{{ route('login') }}">
+                    ログインはこちら
+                </a>
+            </div>
         </div>
     </div>
 </div>

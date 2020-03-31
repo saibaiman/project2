@@ -34,7 +34,7 @@
                     </a>
                 </p>
             </div>
-            <div class="panel panel-primary">
+            <div class="panel panel-primary" style="margin-bottom: 5%">
                 <div class="panel-heading">
                     よくある質問
                 </div>
@@ -66,10 +66,10 @@
                     </ul>
             </div>
             @guest
-                <a class="btn btn-primary btn-block" href="{{ route('login') }}">
+                <a class="btn btn-info btn-block" href="{{ route('login') }}">
                     ログイン画面へ
                 </a>
-                <a class="btn btn-primary btn-block" href="{{ route('select.pref') }}">
+                <a class="btn btn-info btn-block" href="{{ route('select.pref') }}" style="margin-bottom:100px">
                     新規登録はこちら
                 </a>
             @endguest

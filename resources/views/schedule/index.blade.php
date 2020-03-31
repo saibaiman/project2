@@ -12,12 +12,12 @@
             <table border=1>
                 <tr>
                     <th bgcolor="#E4E5E9" width="10%"></th>
-                    <th bgcolor="#E4E5E9" width="15%">月</th>
-                    <th bgcolor="#E4E5E9" width="15%">火</th>
-                    <th bgcolor="#E4E5E9" width="15%">水</th>
-                    <th bgcolor="#E4E5E9" width="15%">木</th>
-                    <th bgcolor="#E4E5E9" width="15%">金</th>
-                    <th bgcolor="#E4E5E9" width="15%">土</th>
+                    <th bgcolor="#FFFF9F" width="15%">月</th>
+                    <th bgcolor="#F9B1D7" width="15%">火</th>
+                    <th bgcolor="#A2CBE1" width="15%">水</th>
+                    <th bgcolor="#CCDE87" width="15%">木</th>
+                    <th bgcolor="#FCC8B2" width="15%">金</th>
+                    <th bgcolor="#DFBEDD" width="15%">土</th>
                 </tr>
                 @php
                     $j = 1;

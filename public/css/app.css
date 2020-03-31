@@ -1090,7 +1090,7 @@ textarea {
 }
 /*???link*/
 a {
-  color: #000000;
+  color: #4285F3;
   text-decoration: none;
 }
 a:focus,
@@ -3611,7 +3611,8 @@ fieldset[disabled] .btn-link:hover {
 }
 .btn-block {
   display: block;
-  width: 100%;
+  width: 50%;
+  margin: 5% 25%
 }
 .btn-block + .btn-block {
   margin-top: 5px;
@@ -3619,7 +3620,7 @@ fieldset[disabled] .btn-link:hover {
 input[type="button"].btn-block,
 input[type="reset"].btn-block,
 input[type="submit"].btn-block {
-  width: 100%;
+  width: 60%;
 }
 .fade {
   opacity: 0;
@@ -5620,7 +5621,7 @@ button.list-group-item-danger.active:hover {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 .panel-body {
-  padding: 10px 4px;
+  padding: 0px 4px;
 }
 .panel-body:after,
 .panel-body:before {

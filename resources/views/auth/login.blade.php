@@ -41,10 +41,12 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> 次から自動的にログインする
-                                    </label>
+                                <div class="text-center">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> 次から自動的にログインする
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -57,9 +59,11 @@
                             </div>
                         </div>
                     </form>
-                    <a class="btn btn-info btn-block" href="{{ route('password.request') }}">
-                        パスワードを忘れた場合はこちら
-                    </a>
+                    <div  class="text-center">
+                        <a href="{{ route('password.request') }}">
+                            パスワードを忘れた場合はこちら
+                        </a>
+                    </div>
                 </div>
             </div>
             <a class="btn btn-primary btn-block" href="{{ route('select.pref') }}">

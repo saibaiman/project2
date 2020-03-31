@@ -17,7 +17,7 @@
                                     <p>自分の授業がない場合は</p>
                                     <p>こちらをクリックしてください。</p>
                                 </span>
-                                <i class="fas fa-chevron-circle-down" style="font-size:20px;margin:0% 48%"></i>
+                                <i class="fas fa-plus" style="font-size:20px;margin:0% 48%"></i>
                             </a>
                             <div class="collapse" id="new_class">
                                 <div class="well">
@@ -74,7 +74,7 @@
 
                                         <div class="form-group">
                                             <div class="col-md-6 col-md-offset-4">
-                                                <button type="submit" class="btn btn-primary">
+                                                <button type="submit" class="btn btn-primary btn-block">
                                                     登録する
                                                 </button>
                                             </div>
