@@ -18,7 +18,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-4 control-label">登録しているメールアドレス</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
@@ -33,8 +33,8 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Send Password Reset Link
+                                <button type="submit" class="btn btn-primary btn-block" style="width: 70%; margin: 0% 15%">
+                                    パスワード変更用メールを送信
                                 </button>
                             </div>
                         </div>
