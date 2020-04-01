@@ -77,7 +77,7 @@ class ThreadController extends Controller
         $user = Auth::user();
         $university_id = $user->university_id;
         $threads = Thread::where([['university_id', $university_id], ['type_id', $id]])
-            ->orderBy('created_at', 'dsc')
+            ->orderBy('updated_at', 'dsc')
             ->get();
         return view('university_post.thread_index', compact('university_id', 'id', 'threads'));
     }
