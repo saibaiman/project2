@@ -54,8 +54,7 @@ class PostController extends Controller
      */
     public function show($posts)
     {
-        $postss = $this->post->where('class_id', $posts)->get();
-        return view('schedule.detail', compact('posts'));
+        //
     }
 
     /**

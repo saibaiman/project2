@@ -15,7 +15,18 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                 <p style="text-align:center;">
-                    <label>{{ config('time.' . $id) }}・{{ $lecture->name }}の掲示板</label>
+                    <label>
+                        {{ config('time.' . $id) }}・{{ $lecture->name }}の掲示板 |
+                    </label>
+                    <div style="float: right;">
+                        @if ($exist_check->isNotEmpty())
+                            <form action="{{ route('class.destroy', [$id]) }}" method="post">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <input type="submit" class="btn btn-sm btn-success" value="コマから外す">
+                            </form>
+                        @endif
+                    </div>
                 </p>
                     <table class="table">
                         <tbody>
