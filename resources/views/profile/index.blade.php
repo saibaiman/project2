@@ -4,7 +4,7 @@
 <div class="container" style="margin-top: 10px;">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-primary">
+            <div class="panel panel-primary" style="margin-bottom:10px">
                 <div class="panel-heading" style="text-align: center">プロフィール編集</div>
                     @if (session('status'))
                         <div class="alert alert-success">
@@ -71,6 +71,32 @@
                             <input type="submit" value="プロフィールを変更する" class="btn btn-info btn-block" style="margin: 5% 20%">
                         </div>
                     </form>
+                </div>
+            </div>
+            <button type="button" class="btn btn-default btn-block" data-toggle="modal" data-target="#logout-confirm-modal" style="margin: 10% 25% 25% 25%">
+                ログアウト
+            </button>
+            <!-- モーダル・ダイアログ -->
+            <div class="modal fade" id="logout-confirm-modal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                            <p class="modal-title">確認</h4>
+                        </div>
+                        <div class="modal-body">
+                            本当にログアウトしますか？
+                        </div>
+                        <div class="modal-footer">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                {{ csrf_field() }}
+                                <button class="btn btn-primary btn-block" type="submit" value="logout">
+                                    ログアウトする
+                                </button>
+                            </form>
+                            <button type="button" class="btn btn-default btn-block" data-dismiss="modal">キャンセル</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
