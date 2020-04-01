@@ -12,6 +12,7 @@ use App\Lecture;
 use App\Post;
 use DB;
 use Image;
+use phpDocumentor\Reflection\Types\Null_;
 
 class ClassController extends Controller
 {
@@ -87,7 +88,10 @@ class ClassController extends Controller
             ->where('class_id', $id)
             ->orderBy('created_at', 'dsc')
             ->paginate(10);
-        return view('schedule.detail', compact('id', 'lecture', 'posts'));
+        $exist_check = Schedule::where('user_id', $user_id)
+            ->where($class_id, $lecture->id)
+            ->get();
+        return view('schedule.detail', compact('id', 'exist_check', 'lecture', 'posts'));
     }
 
     /**
@@ -132,7 +136,8 @@ class ClassController extends Controller
         $schedule->$class_id = $lecture_id;
         $schedule->save();
 
-        return redirect()->route('schedules.index')->with('status', '授業を登録しました');
+        return redirect()->route('schedules.index')
+            ->with('status', '授業を登録しました');
     }
 
     /**
@@ -143,6 +148,12 @@ class ClassController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user_id = Auth::id();
+        $class_id = 'class_' . $id;
+        $user_schedule = Schedule::where('user_id', $user_id)->first();
+        $user_schedule->$class_id = NULL;
+        $user_schedule->save();
+        return redirect()->route('schedules.index')
+            ->with('status', '更新しました');
     }
 }

@@ -32,7 +32,7 @@ Route::group(['namespace' => 'Student', 'middleware' => 'auth'], function() {
     Route::resource('schedules', 'ScheduleController');
     Route::resource('threads', 'ThreadController');
     Route::resource('universityposts', 'UniversityPostController');
-    Route::resource('class', 'ClassController', ['only' => ['show', 'update', 'store']]);
+    Route::resource('class', 'ClassController', ['only' => ['show', 'update', 'store', 'destroy']]);
     Route::resource('profile', 'ProfileController', ['only' => ['index', 'store']]);
     Route::get('email/{token}', 'ProfileController@authorizeEmail')->name('profile.authorize');
 });
