@@ -17,7 +17,7 @@
                 <p>お問い合わせはUnipedia公式サイト</p>
                 <p>または公式SNSにて受け付けております。</p>
             </span>
-            <a class="btn btn-info btn-block" href="https://peraichi.com/landing_pages/view/xewmz">
+            <a class="btn btn-info btn-block" href="https://peraichi.com/landing_pages/view/xewmz" target="_blank">
                 Unipedia公式サイト
             </a>
             <div class="btn__container">
@@ -34,36 +34,45 @@
                     </a>
                 </p>
             </div>
-            <div class="panel panel-primary" style="margin-bottom: 5%">
+            <div class="panel panel-primary" style="margin-bottom: 20%">
                 <div class="panel-heading">
                     よくある質問
                 </div>
-                    <ul class="list-group">
-                        <a class="list-group-item" data-toggle="collapse" href="#question1">
-                            Unipediaの利用に料金はかかりますか？
-                        </a>
-                        <div class="collapse" id="question1">
-                            <div class="well">
-                                料金は一切、いただいておりません。安心してご利用ください。
-                            </div>
+                <ul class="list-group">
+                    <a class="list-group-item" data-toggle="collapse" href="#question1">
+                        <i class="fas fa-question"></i>
+                        所属している大学・学部・学科がありません。
+                    </a>
+                    <div class="collapse" id="question1">
+                        <div class="well">
+                            <i class="far fa-lightbulb"></i>
+                            <p>大学・学部・学科はキャンパスの所属する都道府県ごとに分類されております。</p>
+                            <p>今一度お客様が所属されている学部・学科のキャンパス所在地をご確認の上、都道府県選択からお試しください。</p>
+                            <p>お困りの場合は、お手数ですがUnipedia公式サイト、公式Twitter、公式Instagramのいずれかまでお問い合わせください。</p>
                         </div>
-                        <a class="list-group-item" data-toggle="collapse" href="#question2">
-                            質問B
-                        </a>
-                        <div class="collapse" id="question2">
-                            <div class="well">
-                                質問B質問B質問B質問B質問B質問B質問B質問B質問B質問B質問B質問B質問B質問B質問B質問B質問B質問B質問B質問B質問B
-                            </div>
+                    </div>
+                    <a class="list-group-item" data-toggle="collapse" href="#question2">
+                        <i class="fas fa-question"></i>
+                        専門学生は利用できますか？
+                    </a>
+                    <div class="collapse" id="question2">
+                        <div class="well">
+                            <i class="far fa-lightbulb"></i>
+                            <p>申し訳ございません。</p>
+                            <p>現在は大学のみ対応しております。</p>
                         </div>
-                        <a class="list-group-item" data-toggle="collapse" href="#question3">
-                            質問C
-                        </a>
-                        <div class="collapse" id="question3">
-                            <div class="well">
-                                質問C質問C質問C質問C質問C質問C質問C質問C質問C質問C質問C質問C質問C質問C質問C
-                            </div>
+                    </div>
+                    <a class="list-group-item" data-toggle="collapse" href="#question3">
+                        <i class="fas fa-question"></i>
+                        Unipediaの利用に料金はかかりますか？
+                    </a>
+                    <div class="collapse" id="question3">
+                        <div class="well">
+                            <i class="far fa-lightbulb"></i>
+                            料金は一切、いただいておりません。安心してご利用ください。
                         </div>
-                    </ul>
+                    </div>
+                </ul>
             </div>
             @guest
                 <a class="btn btn-info btn-block" href="{{ route('login') }}">
